@@ -1,11 +1,12 @@
 package money;
 
 public class Franc extends Money {
-	Franc(int amount) {
-		this.amount = amount;
+
+	Franc(int amount, String currency) {
+		super(amount, currency);
 	}
 
 	Money times(int multipiler) {
-		return new Franc(this.amount * multipiler);
+		return Money.franc(this.amount * multipiler);
 	}
 }

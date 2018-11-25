@@ -1,12 +1,11 @@
 package money;
 
 class Dollar extends Money {
-	Dollar(int amount) {
-		this.amount = amount;
+	Dollar(int amount, String currency) {
+		super(amount, currency);
 	}
 
 	Money times(int multipiler) {
-		return new Dollar(this.amount * multipiler);
+		return Money.dollar(this.amount * multipiler);
 	}
-
 }
