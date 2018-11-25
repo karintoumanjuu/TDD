@@ -1,9 +1,6 @@
 package money;
 
-public class Franc {
-
-	private int amount;
-
+public class Franc extends Money {
 	Franc(int amount) {
 		this.amount = amount;
 	}
@@ -11,10 +8,4 @@ public class Franc {
 	Franc times(int multipiler) {
 		return new Franc(this.amount * multipiler);
 	}
-
-	public boolean equals(Object object) {
-		Franc Franc = (Franc) object;
-		return this.amount == Franc.amount;
-	}
-
 }
