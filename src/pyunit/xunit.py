@@ -10,7 +10,8 @@ class TestCase:
             method()
         except:
             result.testFailed()
-        self.tearDown()
+        finally:
+            self.tearDown()
 
     def setUp(self):
         pass

@@ -30,7 +30,12 @@ class TestCaseTest(xunit.TestCase):
         suite.add(xunit.WasRun("testMethod"))
         suite.add(xunit.WasRun("testBrokenMethod"))
         suite.run(self.result)
-        assert("2 run, 1 failed" == self.result.summary())
+        assert ("2 run, 1 failed" == self.result.summary())
+        
+    def testTearDown(self):
+        test = xunit.WasRun("testBrokenMethod")
+        test.run(self.result)
+        assert ("setUp tearDown " == test.log)
 
 if __name__ == '__main__':
     suite = xunit.TestSuite()
@@ -39,6 +44,7 @@ if __name__ == '__main__':
     suite.add(TestCaseTest("testFailedResult"))
     suite.add(TestCaseTest("testFailedResultFormatting"))
     suite.add(TestCaseTest("testSuite"))
+    suite.add(TestCaseTest("testTearDown"))
     result = xunit.TestResult()
     suite.run(result)
     print(result.summary())
