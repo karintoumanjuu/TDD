@@ -17,9 +17,17 @@ class TestCaseTest(xunit.TestCase):
         result = test.run()
         assert ("1 run, 1 failed" == result.summary())
 
+    def testFailedResultFormatting(self):
+        result = xunit.TestResult()
+        result.testStarted()
+        result.testFailed()
+        assert ("1 run, 1 failed" == result.summary())
+
 if __name__ == '__main__':
     TestCaseTest("testTemplateMethod").run()
     TestCaseTest("testResult").run()
-    # TestCaseTest("testFailedResult").run()
+    TestCaseTest("testFailedResult").run()
+    TestCaseTest("testFailedResultFormatting").run()
+
 
 
