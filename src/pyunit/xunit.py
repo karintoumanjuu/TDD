@@ -4,8 +4,8 @@ class TestCase:
 
     def run(self, result):
         result.testStarted()
-        self.setUp()
         try:
+            self.setUp()
             method = getattr(self, self.name)
             method()
         except:
@@ -46,6 +46,13 @@ class WasRun(TestCase):
 
     def testBrokenMethod(self):
         raise Exception
+
+class setUpError(TestCase):
+    def setUp(self):
+        raise Exception
+
+    def testMethod(self):
+        pass
 
 class TestSuite:
     def __init__(self):

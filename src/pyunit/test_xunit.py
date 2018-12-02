@@ -37,6 +37,11 @@ class TestCaseTest(xunit.TestCase):
         test.run(self.result)
         assert ("setUp tearDown " == test.log)
 
+    def testSetUpError(self):
+        test = xunit.setUpError("testMethod")
+        test.run(self.result)
+        assert ("1 run, 1 failed" == self.result.summary())
+
 if __name__ == '__main__':
     suite = xunit.TestSuite()
     suite.add(TestCaseTest("testTemplateMethod"))
@@ -45,6 +50,8 @@ if __name__ == '__main__':
     suite.add(TestCaseTest("testFailedResultFormatting"))
     suite.add(TestCaseTest("testSuite"))
     suite.add(TestCaseTest("testTearDown"))
+    suite.add(TestCaseTest("testSetUpError"))
+
     result = xunit.TestResult()
     suite.run(result)
     print(result.summary())
