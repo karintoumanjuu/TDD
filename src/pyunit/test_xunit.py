@@ -2,17 +2,10 @@ import xunit
 
 
 class TestCaseTest(xunit.TestCase):
-    def setUp(self):
-        self.test = xunit.WasRun("testMethod")
-
-    def testRunning(self):
-        self.test.run()
-        assert (self.test.wasRun)
-        
-    def testSetUp(self):
-        self.test.run()
-        assert(self.test.wasSetUp)
+    def testTemplateMethod(self):
+        test = xunit.WasRun("testMethod")
+        test.run()
+        assert("setUp testMethod tearDown " == test.log)
 
 if __name__ == '__main__':
-    TestCaseTest("testRunning").run()
-    TestCaseTest("testSetUp").run()
+    TestCaseTest("testTemplateMethod").run()
